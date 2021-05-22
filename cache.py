@@ -1,11 +1,10 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
-
-
-# todo redis-config
 from redis import StrictRedis
+import config as conf
 
-redis_client = StrictRedis(host='localhost', port=6379)
+redis_conf = conf.redis
+redis_client = StrictRedis(host=redis_conf['host'], port=redis_conf['port'], password=redis_conf['pass'])
 
 TOKEN_CACHE_KEY_PREFIX = 'token:'
 EMAIL_KEY_CODE_KEY_PREFIX = 'email:'

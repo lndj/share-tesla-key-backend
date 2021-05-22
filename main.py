@@ -5,14 +5,18 @@ import teslapy
 from flask import Flask, request
 from utils import res_error, res_ok, gen_key_code, encrypt, decrypt
 from cache import save_token, get_key_code_by_email
+import config as conf
+from flask_cors import CORS
 
 app = Flask(__name__)
+if conf.is_dev():
+    CORS(app)
 
 # todo
 SECRET_KEY = b'qaOMUbtW4M31PDU8p0LdwTdgE22coHm00RGOFK-FSQs='
 
 
-@app.route('/auth/login')
+@app.route('/api/auth/login', methods=['POST'])
 def auth_tesla():
     email = request.values.get('email')
     password = request.values.get('password')
