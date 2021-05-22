@@ -1,0 +1,4 @@
+Flask==2.0.0
+TeslaPy==1.2.0
+cryptography==3.4.7
+redis==3.5.3
